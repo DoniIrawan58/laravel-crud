@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/siswa', 'App\Http\Controllers\SiswaController@index');
+Route::post('/siswa/create', 'App\Http\Controllers\SiswaController@create');
 
 //Route::get('/siswa', [SiswaController:: class, 'index']);
 
