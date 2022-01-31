@@ -1,12 +1,6 @@
- <!DOCTYPE html>
- <html>
- <head>
-     <title>tes</title>
-     <link rel="stylesheet" href="css/bootstrap.min.css">
- </head>
- <body>
+@extends('layouts.master')
+@section('content')
 
-<div class="container">
     @if(session('sukses'))
     <div class="alert alert-success" role="alert">
      {{session('sukses')}}
@@ -30,6 +24,7 @@
                 <th>JENIS KELAMIN</th>
                 <th>AGAMA</th>
                 <th>ALAMAT</th>
+                <th>Aksi</th>
             </tr>
             @foreach ($data_siswa as $siswa)
             <tr>
@@ -38,7 +33,11 @@
                 <td>{{$siswa->jenis_kelamin}}</td>
                 <td>{{$siswa->agama}}</td>
                 <td>{{$siswa->alamat}}</td>
-            </tr>
+                <td>
+                    <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+                </tr>
             @endforeach
             </table>
     </div>
@@ -91,6 +90,4 @@
     </div>
   </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
- </body>
- </html>
+  @endsection

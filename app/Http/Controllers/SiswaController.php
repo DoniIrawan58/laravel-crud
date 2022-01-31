@@ -18,4 +18,23 @@ class SiswaController extends Controller
         return redirect('/siswa')->with('sukses', 'Data telah diinput!');
     }
 
+    public function edit ($id)
+    {
+        $siswa = \App\Models\Siswa::find($id);
+        return view('siswa/edit',['siswa' => $siswa]);
+    }
+
+    public function update(Request $request, $id){
+        $siswa = \App\Models\Siswa::find($id);
+        $siswa->update($request->all());
+        return redirect('/siswa')->with('sukses','Data berhasil di update');
+    }
+
+    public function delete($id)
+    {
+        $siswa = \App\Models\Siswa::find($id);
+        $siswa->delete($siswa);
+        return redirect('/siswa')->with('sukses', 'Data berhasil dihapus');
+    }
+
 }
